@@ -7,3 +7,5 @@ Device used for testing: Samsung Galaxy S5 running on Android Lollipop 5.0 (API 
 
 Min. SDK version supported: 19 (KitKat).
 
+![alt text](screenshots/Screenshot_2016-03-16-15-11-19.png "Start")
+
