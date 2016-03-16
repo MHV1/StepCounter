@@ -3,7 +3,7 @@
     package="com.mhv.stepcounter">
 
     <uses-feature
-        android:name="@string/step_detector" android:required="false"/>
+        android:name="android.hardware.sensor.stepdetector" android:required="true"/>
 
     <application
         android:allowBackup="true"

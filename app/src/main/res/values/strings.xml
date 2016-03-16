@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Step Counter</string>
     <string name="title">Step Counter</string>
-    <string name="record">Day record: %1$d</string>
+    <string name="record">Day record: %1$d steps</string>
     <string name="steps_label">Steps taken:</string>
     <string name="steps">%1$d</string>
     <string name="time">Time: %1$s</string>

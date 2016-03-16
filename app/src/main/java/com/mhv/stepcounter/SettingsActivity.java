@@ -6,6 +6,7 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
+import android.view.Window;
 
 public class SettingsActivity extends PreferenceActivity {
     static final String DAY_STEP_RECORD = "dayStepRecord";

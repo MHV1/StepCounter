@@ -97,6 +97,8 @@ public class MainActivityFragment extends Fragment implements SensorEventListene
                         startButton.setText(R.string.pause);
                         startButton.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.darkGray));
                         sensorManager.registerListener(MainActivityFragment.this, stepDetectorSensor, SensorManager.SENSOR_DELAY_NORMAL);
+                        sensorManager.registerListener(MainActivityFragment.this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
+                        sensorManager.registerListener(MainActivityFragment.this, magnetometer, SensorManager.SENSOR_DELAY_NORMAL);
                         startTime = SystemClock.uptimeMillis();
                         handler.postDelayed(timerRunnable, 0);
                         active = true;
@@ -145,16 +147,13 @@ public class MainActivityFragment extends Fragment implements SensorEventListene
         timeText.setText(String.format(getResources().getString(R.string.time), "0:00:00"));
         speedText.setText(String.format(getResources().getString(R.string.speed), 0));
         distanceText.setText(String.format(getResources().getString(R.string.distance), 0));
+        orientationText.setText(String.format(getResources().getString(R.string.orientation), ""));
     }
 
 
     @Override
     public void onResume() {
         super.onResume();
-
-        //Register listener for sensors used for the compass and set the step record of the day
-        sensorManager.registerListener(this, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
-        sensorManager.registerListener(this, magnetometer, SensorManager.SENSOR_DELAY_NORMAL);
         dayStepRecord = sharedPreferences.getInt(SettingsActivity.DAY_STEP_RECORD, 3) * 1000;
         dayRecordText.setText(String.format(getResources().getString(R.string.record), dayStepRecord));
     }
@@ -163,8 +162,9 @@ public class MainActivityFragment extends Fragment implements SensorEventListene
     @Override
     public void onPause() {
         super.onPause();
-
         //Unregister for step detector
+        sensorManager.unregisterListener(this, accelerometer);
+        sensorManager.unregisterListener(this, magnetometer);
         sensorManager.unregisterListener(this, stepDetectorSensor);
     }
 
@@ -264,7 +264,9 @@ public class MainActivityFragment extends Fragment implements SensorEventListene
 
             String timeString = String.format("%d:%s:%s", hours, String.format("%02d", minutes), String.format("%02d", seconds));
 
-            timeText.setText(String.format(getResources().getString(R.string.time), timeString));
+            if (isAdded()) {
+                timeText.setText(String.format(getResources().getString(R.string.time), timeString));
+            }
             handler.postDelayed(this, 0);
         }
     };
