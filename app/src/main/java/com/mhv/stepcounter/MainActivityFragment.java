@@ -107,6 +107,8 @@ public class MainActivityFragment extends Fragment implements SensorEventListene
                         startButton.setText(R.string.start);
                         startButton.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.lightGray));
                         sensorManager.unregisterListener(MainActivityFragment.this, stepDetectorSensor);
+                        sensorManager.unregisterListener(MainActivityFragment.this, accelerometer);
+                        sensorManager.unregisterListener(MainActivityFragment.this, magnetometer);
                         elapsedTime += timeInMilliseconds;
                         handler.removeCallbacks(timerRunnable);
                         active = false;
@@ -162,7 +164,7 @@ public class MainActivityFragment extends Fragment implements SensorEventListene
     @Override
     public void onPause() {
         super.onPause();
-        //Unregister for step detector
+        //Unregister for all sensors
         sensorManager.unregisterListener(this, accelerometer);
         sensorManager.unregisterListener(this, magnetometer);
         sensorManager.unregisterListener(this, stepDetectorSensor);
