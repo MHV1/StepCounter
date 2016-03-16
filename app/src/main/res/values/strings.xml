@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Step Counter</string>
+    <string name="title">Step Counter</string>
+    <string name="record">Day record: %1$d</string>
+    <string name="steps_label">Steps taken:</string>
+    <string name="steps">%1$d</string>
+    <string name="time">Time: %1$s</string>
+    <string name="speed">Average speed: %1$d steps/min</string>
+    <string name="distance">Distance: %1$s m</string>
+    <string name="orientation">Orientation: %1$s</string>
+    <string name="settings">Settings</string>
+    <string name="start">START!</string>
+    <string name="pause">Pause</string>
+    <string name="reset">Reset</string>
+    <string name="achieved">Record Achieved!</string>
+</resources>

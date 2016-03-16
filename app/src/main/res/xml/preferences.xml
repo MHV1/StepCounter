@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Preference created to store the step record of the day-->
+    <com.mhv.stepcounter.NumberPickerPreference
+        android:defaultValue="3"
+        android:key="dayStepRecord"
+        android:summary=""
+        android:title="Step record of the day" />
+
+</PreferenceScreen>
